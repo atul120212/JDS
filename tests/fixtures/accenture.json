@@ -1,0 +1,51 @@
+{
+  "data": [
+    {
+      "title": "Associate Software Engineer",
+      "requisitionId": "R00111111",
+      "guid": "R00111111_en",
+      "location": ["Bengaluru", "Hyderabad"],
+      "feedCity": "Multiple Locations",
+      "country": "India",
+      "yearsOfExperience": "Experience: 0-1 years",
+      "employeeType": "Full-time",
+      "remoteType": "",
+      "careerLevel": "Analyst",
+      "jobTypeDescription": "Entry Level",
+      "jobScheduleDescription": "Full time",
+      "function": ["Technology"],
+      "skill": ["Java", "Python"],
+      "mustHaveSkills": "None",
+      "goodToHaveSkills": "None",
+      "updateDate": "2026-10-01T10:00:00.000-07:00",
+      "jobDetailUrl": "https://www.accenture.com/{0}/careers/jobdetails?id=R00111111_en&title=Associate+Software+Engineer",
+      "jobDescriptionClean": "Join our graduate program. We are hiring freshers with strong fundamentals in Java and Python. Work on client projects across engineering teams."
+    },
+    {
+      "title": "Senior Manager - Cloud Infrastructure",
+      "requisitionId": "R00222222",
+      "guid": "R00222222_en",
+      "location": ["Pune"],
+      "feedCity": "Pune",
+      "country": "India",
+      "yearsOfExperience": "Experience: 8-10 years",
+      "employeeType": "Full-time",
+      "remoteType": "Remote",
+      "careerLevel": "Senior Manager",
+      "jobTypeDescription": "Senior Level",
+      "jobScheduleDescription": "Full time",
+      "function": ["Operations & Delivery"],
+      "skill": ["AWS", "Kubernetes"],
+      "mustHaveSkills": "None",
+      "goodToHaveSkills": "None",
+      "updateDate": "2026-10-05T10:00:00.000-07:00",
+      "jobDetailUrl": "https://www.accenture.com/{0}/careers/jobdetails?id=R00222222_en&title=Senior+Manager+-+Cloud+Infrastructure",
+      "jobDescriptionClean": "Lead our cloud infrastructure engineering team. Deep hands-on experience with AWS and Kubernetes required. Manage a team of engineers delivering platform reliability."
+    }
+  ],
+  "aggregations": {},
+  "debugQuery": "",
+  "totalHits": { "total": 2, "overMaxHits": "False" },
+  "labelConfigMapping": {},
+  "message": "success"
+}

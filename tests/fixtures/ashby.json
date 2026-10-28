@@ -1,0 +1,34 @@
+{
+  "apiVersion": "1",
+  "jobs": [
+    {
+      "id": "9f8e7d6c-aaaa-bbbb-cccc-ddddeeeeffff",
+      "title": "Data Scientist",
+      "department": "Data",
+      "team": "Risk",
+      "employmentType": "FullTime",
+      "location": "New York, NY",
+      "secondaryLocations": [{"location": "Remote (US)"}],
+      "publishedAt": "2026-10-01T12:00:00.000+00:00",
+      "isListed": true,
+      "isRemote": true,
+      "jobUrl": "https://jobs.ashbyhq.com/ramp/9f8e7d6c-aaaa-bbbb-cccc-ddddeeeeffff",
+      "applyUrl": "https://jobs.ashbyhq.com/ramp/9f8e7d6c-aaaa-bbbb-cccc-ddddeeeeffff/application",
+      "descriptionHtml": "<p>Build models with Python, SQL and scikit-learn.</p>",
+      "descriptionPlain": "Build risk models with Python, SQL and scikit-learn. Experience with Snowflake and dbt is a plus.",
+      "compensation": {
+        "compensationTierSummary": "$150K – $210K • Offers Equity",
+        "summaryComponents": [
+          {"compensationType": "Salary", "interval": "1 YEAR", "currencyCode": "USD", "minValue": 150000, "maxValue": 210000}
+        ]
+      }
+    },
+    {
+      "id": "unlisted-1",
+      "title": "Hidden role",
+      "isListed": false,
+      "jobUrl": "https://jobs.ashbyhq.com/ramp/unlisted-1",
+      "descriptionPlain": "This should never be collected because it is not listed."
+    }
+  ]
+}

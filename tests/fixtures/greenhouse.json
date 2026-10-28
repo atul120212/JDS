@@ -1,0 +1,33 @@
+{
+  "jobs": [
+    {
+      "id": 4012345,
+      "title": "Senior Backend Engineer, Payments",
+      "updated_at": "2026-09-30T10:15:00-04:00",
+      "first_published": "2026-09-01T09:00:00-04:00",
+      "absolute_url": "https://stripe.com/jobs/listing/senior-backend-engineer/4012345?gh_src=abc",
+      "location": {"name": "San Francisco, CA"},
+      "departments": [{"id": 1, "name": "Engineering"}],
+      "metadata": [{"id": 9, "name": "Employment Type", "value": "Full-time"}],
+      "content": "&lt;p&gt;We are building the &lt;strong&gt;payments&lt;/strong&gt; backbone of the internet.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;5+ years with Java, Go, or Ruby&lt;/li&gt;&lt;li&gt;Experience with AWS, Kafka and PostgreSQL&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;The annual salary range is $180,000 - $250,000 USD.&lt;/p&gt;"
+    },
+    {
+      "id": 4012346,
+      "title": "Software Engineering Intern",
+      "updated_at": "2026-09-29T08:00:00Z",
+      "absolute_url": "https://stripe.com/jobs/listing/intern/4012346",
+      "location": {"name": "Remote - US"},
+      "departments": [],
+      "metadata": [],
+      "content": "&lt;p&gt;Join us for a summer internship working with Python and React on real product problems.&lt;/p&gt;"
+    },
+    {
+      "id": 4012347,
+      "title": "",
+      "updated_at": "2026-09-29T08:00:00Z",
+      "absolute_url": "https://stripe.com/jobs/listing/broken/4012347",
+      "location": {"name": "Dublin"},
+      "content": "&lt;p&gt;Missing title so this one is discarded by validation.&lt;/p&gt;"
+    }
+  ]
+}

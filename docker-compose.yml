@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: jd
+      POSTGRES_PASSWORD: jd
+      POSTGRES_DB: jd_collector
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U jd"]
+      interval: 5s
+      retries: 10
+
+  api:
+    build: .
+    env_file: [.env]
+    environment:
+      DATABASE_URL: postgresql+psycopg://jd:jd@db:5432/jd_collector
+    ports: ["8000:8000"]
+    depends_on:
+      db: { condition: service_healthy }
+    # The API container also runs the scheduler (--with-scheduler in the Dockerfile).
+    # Don't add a separate scheduler container as well, or every source is scraped twice.
+    volumes:
+      - ./logs:/app/logs
+      - ./config:/app/config   # writable: the UI saves source changes here
+
+volumes:
+  pgdata:

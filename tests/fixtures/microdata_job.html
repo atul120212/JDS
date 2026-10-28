@@ -1,0 +1,32 @@
+<!doctype html>
+<html><head><title>Account Manager Job Details | Example Corp</title></head>
+<body>
+<div class="cookie-banner" itemscope itemtype="https://schema.org/Thing">
+  <span itemprop="name">Required Cookies</span>
+  <div itemprop="description">These cookies are required to use this site.</div>
+</div>
+<div class="jobDisplayShell" itemscope itemtype="http://schema.org/JobPosting">
+  <span itemprop="title">Account Manager</span>
+  <span class="loc">Gurugram, India</span>
+  <meta itemprop="datePosted" content="2026-10-18">
+  <span itemprop="employmentType">FULL_TIME</span>
+  <div itemprop="hiringOrganization" itemscope itemtype="https://schema.org/Organization">
+    <span itemprop="name">Example Corp</span>
+  </div>
+  <div itemprop="jobLocation" itemscope itemtype="https://schema.org/Place">
+    <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+      <span itemprop="addressLocality">Gurugram</span>
+      <span itemprop="addressRegion">Haryana</span>
+      <span itemprop="addressCountry">India</span>
+    </div>
+  </div>
+  <!-- Some SF CSB templates reuse itemprop="description" for a site-wide company blurb within
+       the same JobPosting scope too, making it a duplicate (list) property - the real job
+       content (much longer) must still win over this short, generic one. -->
+  <footer itemprop="description">Example Corp is a global company with offices worldwide.</footer>
+  <div itemprop="description">
+    Job Summary: own key accounts across India and drive renewal and expansion revenue.
+    Key Responsibilities: manage a portfolio of enterprise accounts; 3-5 years of experience required.
+  </div>
+</div>
+</body></html>

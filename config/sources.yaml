@@ -1,0 +1,197 @@
+# Scrape targets. Every source needs: name (unique), type, company.
+# Common optional keys: enabled, interval_minutes, cron ("0 */6 * * *"), rate_limit_seconds.
+# Everything else is passed to the scraper as an option.
+#
+# Supported types:
+#   greenhouse       board_token          -> boards-api.greenhouse.io
+#   lever            site, region (us|eu) -> api.lever.co
+#   ashby            board                -> api.ashbyhq.com
+#   smartrecruiters  company_id, max_jobs -> api.smartrecruiters.com
+#   accenture        job_country, country_site, max_jobs -> accenture.com's own career search
+#   jsonld           start_urls, link_pattern, max_pages      (schema.org JobPosting: JSON-LD
+#                    or HTML microdata; start_urls may be a sitemap.xml / sitemap_index.xml)
+#   css              list_url, item_selector, title_selector, ... (custom HTML career pages)
+
+defaults:
+  interval_minutes: 360
+  rate_limit_seconds: 1.0
+
+sources:
+  # ---- Big companies -------------------------------------------------------
+  - name: stripe
+    type: greenhouse
+    company: Stripe
+    board_token: stripe
+
+  - name: airbnb
+    type: greenhouse
+    company: Airbnb
+    board_token: airbnb
+
+  - name: palantir
+    type: lever
+    company: Palantir
+    site: palantir
+
+  - name: databricks
+    type: greenhouse
+    company: Databricks
+    board_token: databricks
+
+  - name: cloudflare
+    type: greenhouse
+    company: Cloudflare
+    board_token: cloudflare
+
+  # Disabled: api.smartrecruiters.com/robots.txt currently disallows generic crawlers,
+  # and the collector honours robots.txt. Enable only with permission / for your own board.
+  - name: bosch
+    type: smartrecruiters
+    company: Bosch
+    enabled: false
+    interval_minutes: 720
+    rate_limit_seconds: 1.0
+    company_id: BoschGroup
+    max_jobs: 200
+  - name: accenture-india
+    type: accenture
+    company: Accenture (India)
+    job_country: India
+    country_site: in-en
+    max_jobs: 500
+
+  - name: cognizant-india
+    type: jsonld
+    company: Cognizant (India)
+    start_urls:
+      - https://careers.cognizant.com/sitemap.xml
+    link_pattern: "/india-en/jobs/\\d+/"
+    max_pages: 400
+
+  - name: capgemini-india
+    type: jsonld
+    company: Capgemini (India)
+    start_urls:
+      - https://careers.capgemini.com/sitemap.xml
+    link_pattern: "/job/.*-(Bangalore|Bengaluru|Mumbai|Pune|Hyderabad|Chennai|Noida|Gurgaon|Kolkata)/"
+    max_pages: 400
+
+  # ---- India tech & startups (hiring freshers, campus graduates & interns) ----
+  - name: rubrik
+    type: greenhouse
+    company: Rubrik
+    board_token: rubrik
+
+  - name: hackerrank
+    type: greenhouse
+    company: HackerRank
+    board_token: hackerrank
+
+  - name: inmobi
+    type: greenhouse
+    company: InMobi
+    board_token: inmobi
+
+  - name: groww
+    type: greenhouse
+    company: Groww
+    board_token: groww
+
+  - name: point72
+    type: greenhouse
+    company: Point72
+    board_token: point72
+
+  - name: tower-research
+    type: greenhouse
+    company: Tower Research Capital
+    board_token: towerresearchcapital
+
+  - name: meesho
+    type: lever
+    company: Meesho
+    site: meesho
+
+  - name: cred
+    type: lever
+    company: CRED
+    site: cred
+
+  # ---- Startups ------------------------------------------------------------
+  - name: ramp
+    type: ashby
+    company: Ramp
+    board: ramp
+
+  - name: notion
+    type: ashby
+    company: Notion
+    board: notion
+
+  # ---- Generic examples (disabled; adapt to a real site before enabling) ---
+  - name: example-jsonld
+    type: jsonld
+    company: Example Corp
+    enabled: false
+    start_urls:
+      - https://careers.example.com/jobs
+    link_pattern: "/jobs/[^/]+$"   # regex for job detail links found on the listing page
+    max_pages: 50
+
+  - name: example-css
+    type: css
+    company: Example Startup
+    enabled: false
+    list_url: https://example-startup.com/careers
+    item_selector: "div.job-card"
+    title_selector: "h3"
+    link_selector: "a"
+    location_selector: ".location"
+    next_page_selector: "a.next"
+    description_selector: "div.job-description"
+    max_pages: 5
+  # Disabled - always returns 0 jobs. TCS's careers app (ibegin.tcsapps.com) is a client-side
+  # app with no JSON-LD or server-rendered job links in its HTML, so a plain GET (what `jsonld`
+  # does) sees nothing. Its real data comes from a POST to .../api/en-IN/search/jobs, but that
+  # endpoint requires an XSRF token that's only issued after the site's WAF has let a real
+  # browser session through - not something this project automates around. See the README
+  # ("Other IT-services companies") for the full investigation.
+  - name: tcs
+    type: jsonld
+    company: TCS
+    enabled: false
+    start_urls:
+      - https://ibegin.tcsapps.com/candidate/next/en-IN/jobs/search?page=1&size=10&regular=true&walkin=true&sort=relevance%20desc
+    link_pattern: /(jobs?|careers?|positions?|openings?|roles?|vacanc(y|ies))/[^/?#]+
+    max_pages: 50
+  # HCLTech's listing API (.../services/recruiting/v1/jobs) is disallowed by its robots.txt,
+  # so it can't be used - but its sitemap.xml (not disallowed) lists every job's own page
+  # directly, and those pages are plain server-rendered HTML with schema.org microdata (not
+  # JSON-LD, but the `jsonld` scraper reads both). No browser, no auth, fully robots.txt-
+  # compliant. See the README ("Other IT-services companies") for the full investigation.
+  - name: hcltech
+    type: jsonld
+    company: HCLTech
+    start_urls:
+      - https://careers.hcltech.com/sitemap.xml
+    link_pattern: /job/
+    max_pages: 400
+
+  # Same platform as HCLTech (SAP SuccessFactors Career Site Builder), same approach.
+  - name: wipro
+    type: jsonld
+    company: Wipro
+    start_urls:
+      - https://careers.wipro.com/sitemap.xml
+    link_pattern: /job/
+    max_pages: 400
+
+  # Deloitte (US) runs on Avature; its robots.txt explicitly allows /careers and declares
+  # this sitemap. Individual job pages have full, proper JSON-LD - no custom parsing needed.
+  - name: deloitte-us
+    type: jsonld
+    company: Deloitte (US)
+    start_urls:
+      - https://apply.deloitte.com/en_US/careers/sitemap.xml
+    link_pattern: /JobDetail/
+    max_pages: 400

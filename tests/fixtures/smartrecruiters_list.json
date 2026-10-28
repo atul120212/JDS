@@ -1,0 +1,15 @@
+{
+  "offset": 0,
+  "limit": 100,
+  "totalFound": 1,
+  "content": [
+    {
+      "id": "744000012345678",
+      "name": "Embedded Software Developer",
+      "releasedDate": "2026-09-20T07:30:00.000Z",
+      "location": {"city": "Stuttgart", "region": "BW", "country": "de", "remote": false},
+      "typeOfEmployment": {"label": "Full-time"},
+      "department": {"label": "Mobility Solutions"}
+    }
+  ]
+}

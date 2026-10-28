@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JD Collector</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232a78d6' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='7' width='18' height='13' rx='2'/%3E%3Cpath d='M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/app.css?v=2">
+<script>
+  // Apply the saved theme before first paint to avoid a flash.
+  try {
+    const t = JSON.parse(localStorage.getItem("jdc:theme") || '"system"');
+    if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+  } catch (e) {}
+</script>
+</head>
+<body>
+<div class="app">
+  <aside class="nav" aria-label="Main">
+    <a class="brand" href="#/jobs">
+      <span class="brand-mark" id="brand-icon"></span>
+      <span>JD Collector</span>
+    </a>
+    <nav class="nav-links" id="nav-links"></nav>
+    <div class="nav-foot">
+      <div class="status-pill" id="status-pill" aria-live="polite"></div>
+      <div class="nav-tools">
+        <button class="icon-btn" id="theme-btn" type="button" title="Theme" aria-label="Change theme"></button>
+        <button class="icon-btn" id="settings-btn" type="button" title="Settings" aria-label="Settings"></button>
+      </div>
+    </div>
+  </aside>
+  <main class="main" id="view" tabindex="-1"></main>
+</div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+<noscript><p style="padding:24px">JD Collector needs JavaScript enabled.</p></noscript>
+<script src="/static/app.js?v=2"></script>
+</body>
+</html>

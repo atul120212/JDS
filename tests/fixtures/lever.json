@@ -1,0 +1,17 @@
+[
+  {
+    "id": "a1b2c3d4-0000-1111-2222-333344445555",
+    "text": "Forward Deployed Software Engineer",
+    "createdAt": 1758000000000,
+    "hostedUrl": "https://jobs.lever.co/palantir/a1b2c3d4-0000-1111-2222-333344445555",
+    "applyUrl": "https://jobs.lever.co/palantir/a1b2c3d4-0000-1111-2222-333344445555/apply",
+    "categories": {"commitment": "Full Time", "department": "Engineering", "team": "Dev", "location": "London, United Kingdom"},
+    "workplaceType": "onsite",
+    "description": "<div>Help customers solve their hardest problems with software.</div>",
+    "lists": [
+      {"text": "What we value", "content": "<li>Strong engineering background in TypeScript or Java</li><li>Familiarity with Docker and Kubernetes</li>"}
+    ],
+    "additional": "<div>We offer great benefits.</div>",
+    "salaryRange": {"min": 70000, "max": 95000, "currency": "GBP", "interval": "per-year-salary"}
+  }
+]

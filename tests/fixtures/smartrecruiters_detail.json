@@ -1,0 +1,12 @@
+{
+  "id": "744000012345678",
+  "postingUrl": "https://jobs.smartrecruiters.com/BoschGroup/744000012345678-embedded-software-developer",
+  "applyUrl": "https://jobs.smartrecruiters.com/BoschGroup/744000012345678-embedded-software-developer?oga=true",
+  "jobAd": {
+    "sections": {
+      "companyDescription": {"title": "Company Description", "text": "<p>We shape mobility.</p>"},
+      "jobDescription": {"title": "Job Description", "text": "<ul><li>Develop embedded software in C++ for automotive ECUs</li><li>Work in Agile teams using Git and Jenkins</li></ul>"},
+      "qualifications": {"title": "Qualifications", "text": "<p>Degree in computer science; Linux experience.</p>"}
+    }
+  }
+}

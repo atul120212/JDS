@@ -1,0 +1,930 @@
+# Curated, live-verified directory of company career pages, organized by region.
+#
+# This is NOT scraped automatically - it is a catalog to browse and pick from.
+# Add an entry as an actual source via the web UI (Sources -> Browse catalog),
+# `python -m jd_collector catalog add <name>`, or the POST /catalog/add API.
+#
+# Every entry was checked against the company's real career-page API before being
+# added here, so adding one works immediately. "region" is the company's HQ region
+# (not a guarantee every open role is based there) and uses the same region names
+# jobs are auto-classified into, so catalog and job-search regions line up.
+
+entries:
+  # -------------------------------------------------------------------------- North America
+  - name: accenture-usa
+    company: Accenture (USA)
+    type: accenture
+    region: North America
+    industry: IT Services
+    job_country: USA
+    country_site: us-en
+    max_jobs: 500
+  - name: accenture-canada
+    company: Accenture (Canada)
+    type: accenture
+    region: North America
+    industry: IT Services
+    job_country: Canada
+    country_site: ca-en
+    max_jobs: 300
+  - name: affirm
+    company: Affirm
+    type: greenhouse
+    region: North America
+    industry: Fintech
+    board_token: affirm
+  - name: airbnb
+    company: Airbnb
+    type: greenhouse
+    region: North America
+    industry: Travel
+    board_token: airbnb
+  - name: airtable
+    company: Airtable
+    type: greenhouse
+    region: North America
+    industry: Productivity
+    board_token: airtable
+  - name: anduril
+    company: Anduril
+    type: greenhouse
+    region: North America
+    industry: Defense Tech
+    board_token: andurilindustries
+  - name: anthropic
+    company: Anthropic
+    type: greenhouse
+    region: North America
+    industry: AI
+    board_token: anthropic
+  - name: asana
+    company: Asana
+    type: greenhouse
+    region: North America
+    industry: Productivity
+    board_token: asana
+  - name: betterment
+    company: Betterment
+    type: greenhouse
+    region: North America
+    industry: Fintech
+    board_token: betterment
+  - name: branch
+    company: Branch
+    type: greenhouse
+    region: North America
+    industry: Mobile Tech
+    board_token: branch
+  - name: brex
+    company: Brex
+    type: greenhouse
+    region: North America
+    industry: Fintech
+    board_token: brex
+  - name: calendly
+    company: Calendly
+    type: greenhouse
+    region: North America
+    industry: Productivity
+    board_token: calendly
+  - name: carta
+    company: Carta
+    type: greenhouse
+    region: North America
+    industry: Fintech
+    board_token: carta
+  - name: checkr
+    company: Checkr
+    type: greenhouse
+    region: North America
+    industry: HR Tech
+    board_token: checkr
+  - name: chime
+    company: Chime
+    type: greenhouse
+    region: North America
+    industry: Fintech
+    board_token: chime
+  - name: cloudflare
+    company: Cloudflare
+    type: greenhouse
+    region: North America
+    industry: Infrastructure
+    board_token: cloudflare
+  - name: cockroach-labs
+    company: Cockroach Labs
+    type: greenhouse
+    region: North America
+    industry: Infrastructure
+    board_token: cockroachlabs
+  - name: coinbase
+    company: Coinbase
+    type: greenhouse
+    region: North America
+    industry: Fintech
+    board_token: coinbase
+  - name: coursera
+    company: Coursera
+    type: greenhouse
+    region: North America
+    industry: Edtech
+    board_token: coursera
+  - name: databricks
+    company: Databricks
+    type: greenhouse
+    region: North America
+    industry: Data & AI
+    board_token: databricks
+  - name: deloitte-us
+    company: Deloitte (US)
+    type: jsonld
+    region: North America
+    industry: IT Services
+    start_urls:
+      - https://apply.deloitte.com/en_US/careers/sitemap.xml
+    link_pattern: /JobDetail/
+    max_pages: 400
+  - name: discord
+    company: Discord
+    type: greenhouse
+    region: North America
+    industry: Social
+    board_token: discord
+  - name: doximity
+    company: Doximity
+    type: greenhouse
+    region: North America
+    industry: Healthtech
+    board_token: doximity
+  - name: duolingo
+    company: Duolingo
+    type: greenhouse
+    region: North America
+    industry: Edtech
+    board_token: duolingo
+  - name: elastic
+    company: Elastic
+    type: greenhouse
+    region: North America
+    industry: Infrastructure
+    board_token: elastic
+  - name: faire
+    company: Faire
+    type: greenhouse
+    region: North America
+    industry: Marketplace
+    board_token: faire
+  - name: figma
+    company: Figma
+    type: greenhouse
+    region: North America
+    industry: Design
+    board_token: figma
+  - name: fivetran
+    company: Fivetran
+    type: greenhouse
+    region: North America
+    industry: Data & AI
+    board_token: fivetran
+  - name: flexport
+    company: Flexport
+    type: greenhouse
+    region: North America
+    industry: Logistics
+    board_token: flexport
+  - name: gusto
+    company: Gusto
+    type: greenhouse
+    region: North America
+    industry: HR Tech
+    board_token: gusto
+  - name: handshake
+    company: Handshake
+    type: greenhouse
+    region: North America
+    industry: HR Tech
+    board_token: handshake
+  - name: hex
+    company: Hex
+    type: ashby
+    region: North America
+    industry: Data & AI
+    board: hex
+  - name: instacart
+    company: Instacart
+    type: greenhouse
+    region: North America
+    industry: E-commerce
+    board_token: instacart
+  - name: lattice
+    company: Lattice
+    type: greenhouse
+    region: North America
+    industry: HR Tech
+    board_token: lattice
+  - name: linear
+    company: Linear
+    type: ashby
+    region: North America
+    industry: Dev Tools
+    board: linear
+  - name: lyft
+    company: Lyft
+    type: greenhouse
+    region: North America
+    industry: Transport
+    board_token: lyft
+  - name: mixpanel
+    company: Mixpanel
+    type: greenhouse
+    region: North America
+    industry: Data & AI
+    board_token: mixpanel
+  - name: modern-health
+    company: Modern Health
+    type: greenhouse
+    region: North America
+    industry: Healthtech
+    board_token: modernhealth
+  - name: mongodb
+    company: MongoDB
+    type: greenhouse
+    region: North America
+    industry: Infrastructure
+    board_token: mongodb
+  - name: new-relic
+    company: New Relic
+    type: greenhouse
+    region: North America
+    industry: Dev Tools
+    board_token: newrelic
+  - name: nextdoor
+    company: Nextdoor
+    type: greenhouse
+    region: North America
+    industry: Social
+    board_token: nextdoor
+  - name: notion
+    company: Notion
+    type: ashby
+    region: North America
+    industry: Productivity
+    board: notion
+  - name: okta
+    company: Okta
+    type: greenhouse
+    region: North America
+    industry: Security
+    board_token: okta
+  - name: pagerduty
+    company: PagerDuty
+    type: greenhouse
+    region: North America
+    industry: Dev Tools
+    board_token: pagerduty
+  - name: palantir
+    company: Palantir
+    type: lever
+    region: North America
+    industry: Data & AI
+    site: palantir
+  - name: pinterest
+    company: Pinterest
+    type: greenhouse
+    region: North America
+    industry: Social
+    board_token: pinterest
+  - name: posthog
+    company: PostHog
+    type: ashby
+    region: North America
+    industry: Data & AI
+    board: posthog
+  - name: ramp
+    company: Ramp
+    type: ashby
+    region: North America
+    industry: Fintech
+    board: ramp
+  - name: reddit
+    company: Reddit
+    type: greenhouse
+    region: North America
+    industry: Social
+    board_token: reddit
+  - name: replit
+    company: Replit
+    type: ashby
+    region: North America
+    industry: Dev Tools
+    board: replit
+  - name: robinhood
+    company: Robinhood
+    type: greenhouse
+    region: North America
+    industry: Fintech
+    board_token: robinhood
+  - name: roblox
+    company: Roblox
+    type: greenhouse
+    region: North America
+    industry: Gaming
+    board_token: roblox
+  - name: runway
+    company: Runway
+    type: ashby
+    region: North America
+    industry: AI
+    board: runway
+  - name: samsara
+    company: Samsara
+    type: greenhouse
+    region: North America
+    industry: IoT
+    board_token: samsara
+  - name: scale-ai
+    company: Scale AI
+    type: greenhouse
+    region: North America
+    industry: Data & AI
+    board_token: scaleai
+  - name: sofi
+    company: SoFi
+    type: greenhouse
+    region: North America
+    industry: Fintech
+    board_token: sofi
+  - name: squarespace
+    company: Squarespace
+    type: greenhouse
+    region: North America
+    industry: Web/SaaS
+    board_token: squarespace
+  - name: stripe
+    company: Stripe
+    type: greenhouse
+    region: North America
+    industry: Fintech
+    board_token: stripe
+  - name: toast
+    company: Toast
+    type: greenhouse
+    region: North America
+    industry: Restaurant Tech
+    board_token: toast
+  - name: twilio
+    company: Twilio
+    type: greenhouse
+    region: North America
+    industry: Infrastructure
+    board_token: twilio
+  - name: udemy
+    company: Udemy
+    type: greenhouse
+    region: North America
+    industry: Edtech
+    board_token: udemy
+  - name: watershed
+    company: Watershed
+    type: ashby
+    region: North America
+    industry: Climate Tech
+    board: watershed
+
+  # -------------------------------------------------------------------------- Europe
+  - name: accenture-uk
+    company: Accenture (UK)
+    type: accenture
+    region: Europe
+    industry: IT Services
+    job_country: United Kingdom
+    country_site: gb-en
+    max_jobs: 300
+  - name: adyen
+    company: Adyen
+    type: greenhouse
+    region: Europe
+    industry: Fintech
+    board_token: adyen
+  - name: aircall
+    company: Aircall
+    type: lever
+    region: Europe
+    industry: Sales Tech
+    site: aircall
+  - name: alan
+    company: Alan
+    type: ashby
+    region: Europe
+    industry: Insurtech
+    board: alan
+  - name: algolia
+    company: Algolia
+    type: greenhouse
+    region: Europe
+    industry: Dev Tools
+    board_token: algolia
+  - name: back-market
+    company: Back Market
+    type: ashby
+    region: Europe
+    industry: E-commerce
+    board: backmarket
+  - name: blablacar
+    company: BlaBlaCar
+    type: lever
+    region: Europe
+    industry: Mobility
+    site: blablacar
+  - name: celonis
+    company: Celonis
+    type: greenhouse
+    region: Europe
+    industry: Data & AI
+    board_token: celonis
+  - name: cleo
+    company: Cleo
+    type: greenhouse
+    region: Europe
+    industry: Fintech
+    board_token: cleo
+  - name: contentful
+    company: Contentful
+    type: greenhouse
+    region: Europe
+    industry: Dev Tools
+    board_token: contentful
+  - name: datadog
+    company: Datadog
+    type: greenhouse
+    region: Europe
+    industry: Infrastructure
+    board_token: datadog
+  - name: deliveroo
+    company: Deliveroo
+    type: greenhouse
+    region: Europe
+    industry: Delivery
+    board_token: deliveroo
+  - name: doctolib
+    company: Doctolib
+    type: greenhouse
+    region: Europe
+    industry: Healthtech
+    board_token: doctolib
+  - name: front
+    company: Front
+    type: ashby
+    region: Europe
+    industry: Productivity
+    board: frontcareers
+  - name: getyourguide
+    company: GetYourGuide
+    type: greenhouse
+    region: Europe
+    industry: Travel
+    board_token: getyourguide
+  - name: gocardless
+    company: GoCardless
+    type: greenhouse
+    region: Europe
+    industry: Fintech
+    board_token: gocardless
+  - name: griffin
+    company: Griffin
+    type: ashby
+    region: Europe
+    industry: Fintech
+    board: griffin
+  - name: jobandtalent
+    company: Jobandtalent
+    type: lever
+    region: Europe
+    industry: HR Tech
+    site: jobandtalent
+  - name: lokalise
+    company: Lokalise
+    type: greenhouse
+    region: Europe
+    industry: Dev Tools
+    board_token: lokalise
+  - name: marshmallow
+    company: Marshmallow
+    type: ashby
+    region: Europe
+    industry: Insurtech
+    board: marshmallow
+  - name: monzo
+    company: Monzo
+    type: greenhouse
+    region: Europe
+    industry: Fintech
+    board_token: monzo
+  - name: multiverse
+    company: Multiverse
+    type: ashby
+    region: Europe
+    industry: Edtech
+    board: multiverse
+  - name: n26
+    company: N26
+    type: greenhouse
+    region: Europe
+    industry: Fintech
+    board_token: n26
+  - name: pleo
+    company: Pleo
+    type: ashby
+    region: Europe
+    industry: Fintech
+    board: pleo
+  - name: qonto
+    company: Qonto
+    type: lever
+    region: Europe
+    industry: Fintech
+    site: qonto
+  - name: shift-technology
+    company: Shift Technology
+    type: greenhouse
+    region: Europe
+    industry: Insurtech
+    board_token: shifttechnology
+  - name: sorare
+    company: Sorare
+    type: ashby
+    region: Europe
+    industry: Gaming
+    board: sorare
+  - name: swile
+    company: Swile
+    type: lever
+    region: Europe
+    industry: HR Tech
+    site: swile
+  - name: tide
+    company: Tide
+    type: greenhouse
+    region: Europe
+    industry: Fintech
+    board_token: tide
+  - name: truelayer
+    company: TrueLayer
+    type: greenhouse
+    region: Europe
+    industry: Fintech
+    board_token: truelayer
+  - name: typeform
+    company: Typeform
+    type: greenhouse
+    region: Europe
+    industry: Productivity
+    board_token: typeform
+  - name: wise
+    company: Wise
+    type: greenhouse
+    region: Europe
+    industry: Fintech
+    board_token: wise
+  - name: younited
+    company: Younited
+    type: lever
+    region: Europe
+    industry: Fintech
+    site: younited
+  - name: zego
+    company: Zego
+    type: ashby
+    region: Europe
+    industry: Insurtech
+    board: zego
+
+  # -------------------------------------------------------------------------- Asia Pacific
+  - name: accenture-india
+    company: Accenture (India)
+    type: accenture
+    region: Asia Pacific
+    industry: IT Services
+    job_country: India
+    country_site: in-en
+    max_jobs: 500
+  - name: accenture-philippines
+    company: Accenture (Philippines)
+    type: accenture
+    region: Asia Pacific
+    industry: IT Services
+    job_country: Philippines
+    country_site: ph-en
+    max_jobs: 300
+  - name: airwallex
+    company: Airwallex
+    type: ashby
+    region: Asia Pacific
+    industry: Fintech
+    board: airwallex
+  - name: appier
+    company: Appier
+    type: greenhouse
+    region: Asia Pacific
+    industry: AdTech
+    board_token: appier
+  - name: cred
+    company: CRED
+    type: lever
+    region: Asia Pacific
+    industry: Fintech
+    site: cred
+  - name: culture-amp
+    company: Culture Amp
+    type: greenhouse
+    region: Asia Pacific
+    industry: HR Tech
+    board_token: cultureamp
+  - name: deputy
+    company: Deputy
+    type: lever
+    region: Asia Pacific
+    industry: HR Tech
+    site: deputy
+  - name: groww
+    company: Groww
+    type: greenhouse
+    region: Asia Pacific
+    industry: Fintech
+    board_token: groww
+  - name: hcltech
+    company: HCLTech
+    type: jsonld
+    region: Asia Pacific
+    industry: IT Services
+    start_urls:
+      - https://careers.hcltech.com/sitemap.xml
+    link_pattern: /job/
+    max_pages: 400
+  - name: immutable
+    company: Immutable
+    type: lever
+    region: Asia Pacific
+    industry: Gaming/Web3
+    site: immutable
+  - name: meesho
+    company: Meesho
+    type: lever
+    region: Asia Pacific
+    industry: E-commerce
+    site: meesho
+  - name: moloco
+    company: Moloco
+    type: greenhouse
+    region: Asia Pacific
+    industry: AdTech
+    board_token: moloco
+  - name: ninja-van
+    company: Ninja Van
+    type: lever
+    region: Asia Pacific
+    industry: Logistics
+    site: ninjavan
+  - name: wipro
+    company: Wipro
+    type: jsonld
+    region: Asia Pacific
+    industry: IT Services
+    start_urls:
+      - https://careers.wipro.com/sitemap.xml
+    link_pattern: /job/
+    max_pages: 400
+  - name: xendit
+    company: Xendit
+    type: greenhouse
+    region: Asia Pacific
+    industry: Fintech
+    board_token: xendit
+  - name: xero
+    company: Xero
+    type: ashby
+    region: Asia Pacific
+    industry: Fintech
+    board: xero
+  - name: zeta
+    company: Zeta
+    type: lever
+    region: Asia Pacific
+    industry: Fintech
+    site: zeta
+  - name: zip-co
+    company: Zip Co
+    type: ashby
+    region: Asia Pacific
+    industry: Fintech
+    board: zip
+
+  # -------------------------------------------------------------------------- Latin America
+  - name: addi
+    company: Addi
+    type: ashby
+    region: Latin America
+    industry: Fintech
+    board: addi
+  - name: belvo
+    company: Belvo
+    type: ashby
+    region: Latin America
+    industry: Fintech
+    board: belvo
+  - name: clara
+    company: Clara
+    type: greenhouse
+    region: Latin America
+    industry: Fintech
+    board_token: clara
+  - name: ebanx
+    company: Ebanx
+    type: greenhouse
+    region: Latin America
+    industry: Fintech
+    board_token: ebanx
+  - name: gympass
+    company: Gympass
+    type: greenhouse
+    region: Latin America
+    industry: Health & Wellness
+    board_token: gympass
+  - name: kavak
+    company: Kavak
+    type: lever
+    region: Latin America
+    industry: Marketplace
+    site: kavak
+  - name: nubank
+    company: Nubank
+    type: ashby
+    region: Latin America
+    industry: Fintech
+    board: nubank
+  - name: quintoandar
+    company: QuintoAndar
+    type: greenhouse
+    region: Latin America
+    industry: Real Estate
+    board_token: quintoandar
+  - name: wildlife-studios
+    company: Wildlife Studios
+    type: greenhouse
+    region: Latin America
+    industry: Gaming
+    board_token: wildlifestudios
+  - name: yuno
+    company: Yuno
+    type: lever
+    region: Latin America
+    industry: Fintech
+    site: yuno
+
+  # -------------------------------------------------------------------------- Middle East & Africa
+  - name: andela
+    company: Andela
+    type: ashby
+    region: Middle East & Africa
+    industry: HR Tech
+    board: andela
+  - name: appsflyer
+    company: AppsFlyer
+    type: greenhouse
+    region: Middle East & Africa
+    industry: AdTech
+    board_token: appsflyer
+  - name: fireblocks
+    company: Fireblocks
+    type: greenhouse
+    region: Middle East & Africa
+    industry: Fintech
+    board_token: fireblocks
+  - name: honeybook
+    company: HoneyBook
+    type: ashby
+    region: Middle East & Africa
+    industry: SaaS
+    board: honeybook
+  - name: lemonade
+    company: Lemonade
+    type: ashby
+    region: Middle East & Africa
+    industry: Insurtech
+    board: lemonade
+  - name: melio
+    company: Melio
+    type: greenhouse
+    region: Middle East & Africa
+    industry: Fintech
+    board_token: melio
+  - name: moniepoint
+    company: Moniepoint
+    type: greenhouse
+    region: Middle East & Africa
+    industry: Fintech
+    board_token: moniepoint
+  - name: riskified
+    company: Riskified
+    type: greenhouse
+    region: Middle East & Africa
+    industry: Fintech
+    board_token: riskified
+  - name: tamara
+    company: Tamara
+    type: greenhouse
+    region: Middle East & Africa
+    industry: Fintech
+    board_token: tamara
+  - name: wiz
+    company: Wiz
+    type: greenhouse
+    region: Middle East & Africa
+    industry: Security
+    board_token: wizinc
+  - name: yotpo
+    company: Yotpo
+    type: greenhouse
+    region: Middle East & Africa
+    industry: Marketing Tech
+    board_token: yotpo
+
+  # -------------------------------------------------------------------------- Remote / Global
+  - name: automattic
+    company: Automattic
+    type: greenhouse
+    region: Remote / Global
+    industry: Web/SaaS
+    board_token: automatticcareers
+  - name: beam
+    company: Beam
+    type: greenhouse
+    region: Remote / Global
+    industry: Fintech
+    board_token: beam
+  - name: buffer
+    company: Buffer
+    type: ashby
+    region: Remote / Global
+    industry: Marketing Tech
+    board: buffer
+  - name: close
+    company: Close
+    type: ashby
+    region: Remote / Global
+    industry: Sales Tech
+    board: close
+  - name: float
+    company: Float
+    type: ashby
+    region: Remote / Global
+    industry: Productivity
+    board: float
+  - name: gitlab
+    company: GitLab
+    type: greenhouse
+    region: Remote / Global
+    industry: Dev Tools
+    board_token: gitlab
+  - name: help-scout
+    company: Help Scout
+    type: ashby
+    region: Remote / Global
+    industry: Customer Support
+    board: helpscout
+  - name: jamf
+    company: Jamf
+    type: greenhouse
+    region: Remote / Global
+    industry: Device Mgmt
+    board_token: jamf
+  - name: oyster
+    company: Oyster
+    type: ashby
+    region: Remote / Global
+    industry: HR Tech
+    board: oyster
+  - name: remote
+    company: Remote
+    type: greenhouse
+    region: Remote / Global
+    industry: HR Tech
+    board_token: remote
+  - name: testlio
+    company: Testlio
+    type: greenhouse
+    region: Remote / Global
+    industry: Dev Tools
+    board_token: testlio
+  - name: toptal
+    company: Toptal
+    type: lever
+    region: Remote / Global
+    industry: Marketplace
+    site: toptal
+  - name: zapier
+    company: Zapier
+    type: ashby
+    region: Remote / Global
+    industry: Productivity
+    board: zapier
