@@ -264,7 +264,7 @@ def create_app(with_scheduler: bool = False, run_now: bool = False) -> FastAPI:
     @app.get("/jobs", response_model=JobPage, dependencies=secured, tags=["jobs"])
     def list_jobs(
         filters: repo.JobFilters = Depends(job_filters),
-        sort: str = Query("-posted_date", enum=list(repo.SORTS)),
+        sort: str = Query("-posted_date", description=f"One of: {', '.join(repo.SORTS)}"),
         page: int = Query(1, ge=1),
         page_size: int = Query(20, ge=1, le=100),
         db: Session = Depends(get_db),
@@ -278,7 +278,7 @@ def create_app(with_scheduler: bool = False, run_now: bool = False) -> FastAPI:
     @app.get("/jobs/export.csv", dependencies=secured, tags=["jobs"])
     def export_jobs(
         filters: repo.JobFilters = Depends(job_filters),
-        sort: str = Query("-posted_date", enum=list(repo.SORTS)),
+        sort: str = Query("-posted_date", description=f"One of: {', '.join(repo.SORTS)}"),
         db: Session = Depends(get_db),
     ) -> StreamingResponse:
         rows, _ = repo.search_jobs(db, filters, 1, EXPORT_LIMIT, sort)
