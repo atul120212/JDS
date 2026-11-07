@@ -121,7 +121,9 @@ _CITIES: dict[str, tuple[str, ...]] = {
     ),
     "Asia Pacific": (
         "Bengaluru", "Bangalore", "Mumbai", "New Delhi", "Delhi", "Hyderabad", "Pune",
-        "Gurugram", "Gurgaon", "Chennai", "Noida", "Kolkata", "Singapore", "Tokyo", "Osaka",
+        "Gurugram", "Gurgaon", "Noida", "Greater Noida", "Faridabad", "Ghaziabad",
+        "Ahmedabad", "Vadodara", "Surat", "Gandhinagar", "GIFT City", "Chandigarh", "Mohali",
+        "Jaipur", "Indore", "Chennai", "Kolkata", "Singapore", "Tokyo", "Osaka",
         "Seoul", "Shanghai", "Beijing", "Shenzhen", "Hong Kong", "Sydney", "Melbourne",
         "Brisbane", "Perth", "Auckland", "Wellington", "Jakarta", "Manila", "Kuala Lumpur",
         "Bangkok", "Ho Chi Minh City", "Hanoi", "Taipei",

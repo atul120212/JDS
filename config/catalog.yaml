@@ -634,6 +634,12 @@ entries:
     region: Asia Pacific
     industry: Fintech
     site: cred
+  - name: paytm
+    company: Paytm
+    type: lever
+    region: Asia Pacific
+    industry: Fintech
+    site: paytm
   - name: culture-amp
     company: Culture Amp
     type: greenhouse

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from typing import Any
@@ -178,6 +179,32 @@ def _like(column, value: str):
     return func.lower(column).like(f"%{escaped}%", escape="\\")
 
 
+_LOCATION_ALIASES: dict[str, tuple[str, ...]] = {
+    "delhi ncr": ("delhi", "new delhi", "noida", "greater noida", "gurgaon", "gurugram", "faridabad", "ghaziabad"),
+    "ncr": ("delhi", "new delhi", "noida", "greater noida", "gurgaon", "gurugram", "faridabad", "ghaziabad"),
+    "gujarat": ("ahmedabad", "vadodara", "surat", "gandhinagar", "gift city"),
+    "gujarat hubs": ("ahmedabad", "vadodara", "surat", "gandhinagar", "gift city"),
+    "target hubs": (
+        "delhi", "new delhi", "noida", "greater noida", "gurgaon", "gurugram", "faridabad", "ghaziabad",
+        "ahmedabad", "vadodara", "surat", "gandhinagar",
+        "jaipur", "chandigarh", "mohali", "pune", "mumbai", "bengaluru", "bangalore", "hyderabad", "indore"
+    ),
+    "nearby tech hubs": ("jaipur", "chandigarh", "mohali", "pune", "mumbai", "bengaluru", "bangalore", "hyderabad", "indore"),
+}
+
+
+def _expand_location_terms(loc_str: str) -> list[str]:
+    raw_parts = [p.strip() for p in re.split(r"[,|;]", loc_str) if p.strip()]
+    terms: list[str] = []
+    for part in raw_parts:
+        part_lower = part.lower()
+        if part_lower in _LOCATION_ALIASES:
+            terms.extend(_LOCATION_ALIASES[part_lower])
+        else:
+            terms.append(part)
+    return list(dict.fromkeys(terms))
+
+
 def _apply_filters(stmt: Select, f: JobFilters) -> Select:
     if f.active_only:
         stmt = stmt.where(JobRecord.is_active.is_(True))
@@ -191,7 +218,11 @@ def _apply_filters(stmt: Select, f: JobFilters) -> Select:
     if f.company:
         stmt = stmt.where(_like(JobRecord.company, f.company))
     if f.location:
-        stmt = stmt.where(_like(JobRecord.location, f.location))
+        loc_terms = _expand_location_terms(f.location)
+        if len(loc_terms) > 1:
+            stmt = stmt.where(or_(*[_like(JobRecord.location, term) for term in loc_terms]))
+        elif loc_terms:
+            stmt = stmt.where(_like(JobRecord.location, loc_terms[0]))
     for skill in f.skills:
         stmt = stmt.where(
             JobRecord.job_id.in_(select(JobSkill.job_id).where(JobSkill.skill_lower == skill.strip().lower()))
@@ -205,7 +236,24 @@ def _apply_filters(stmt: Select, f: JobFilters) -> Select:
     if f.role_category:
         stmt = stmt.where(JobRecord.role_category == f.role_category)
     if f.experience_level:
-        stmt = stmt.where(JobRecord.experience_level == f.experience_level)
+        exp_parts = [e.strip() for e in f.experience_level.split(",") if e.strip()]
+        conds = []
+        regular_exps = []
+        for exp in exp_parts:
+            exp_lower = exp.lower()
+            if exp_lower in ("intern", "internship", "internships"):
+                conds.append(func.lower(JobRecord.job_type) == "internship")
+                conds.append(_like(JobRecord.title, "intern"))
+            elif exp_lower in ("fresher", "freshers"):
+                conds.append(JobRecord.experience_level == "Fresher / 0-1 yr")
+                conds.append(_like(JobRecord.title, "fresher"))
+                conds.append(_like(JobRecord.title, "trainee"))
+            else:
+                regular_exps.append(exp)
+        if regular_exps:
+            conds.append(JobRecord.experience_level.in_(regular_exps))
+        if conds:
+            stmt = stmt.where(or_(*conds))
     if f.source:
         stmt = stmt.where(JobRecord.source == f.source)
     if f.posted_after:

@@ -17,7 +17,8 @@ _YR = r"(?:years?|yrs?)"
 
 _FRESHER_RX = re.compile(
     rf"\b(freshers?|entry[- ]level|no (?:prior |relevant )?experience (?:required|needed|necessary)?|"
-    rf"campus hire|graduate trainee|intern(?:ship)?s?|0\s*(?:-|–|to)\s*1\s*{_YR})\b", re.I,
+    rf"campus (?:hire|placement|recruitment)|graduate trainee|intern(?:ship)?s?|trainees?|apprentice(?:ship)?|"
+    rf"graduate engineer trainee|management trainee|junior associate|0\s*(?:-|–|to)\s*[12]\s*{_YR})\b", re.I,
 )
 # Checked in this order: a range ("3-5 years") and an explicit minimum ("minimum 2 years",
 # "at least 2 yrs") are the most specific; "X+ years" next; a bare "X years of experience"

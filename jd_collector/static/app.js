@@ -778,6 +778,7 @@ function segmented(options, value, onChange) {
     onclick: () => { render(v); onChange(v); },
   }, label)));
   render(value);
+  wrap.setValue = render;
   return wrap;
 }
 
@@ -816,6 +817,10 @@ VIEWS.jobs = function JobsView(root, params) {
   const setState = (patch, { reload = true } = {}) => {
     st = { ...st, ...patch };
     if (!("page" in patch)) st.page = 1;
+    if ("location" in patch) locInput.value = st.location || "";
+    if ("experience_level" in patch) expSel.value = st.experience_level || "";
+    if ("job_type" in patch && jobTypeSeg.setValue) jobTypeSeg.setValue(st.job_type || "");
+    renderQuickPills();
     syncUrl();
     if (reload) load();
   };
@@ -836,6 +841,7 @@ VIEWS.jobs = function JobsView(root, params) {
   const roleSel = h("select", { class: "input", "aria-label": "Role category", onchange: (e) => setState({ role_category: e.target.value }) }, h("option", { value: "" }, "Any role"));
   const expSel = h("select", { class: "input", "aria-label": "Experience level", onchange: (e) => setState({ experience_level: e.target.value }) }, h("option", { value: "" }, "Any experience"));
   const salaryInput = h("input", { class: "input", type: "number", min: "0", step: "1000", value: st.min_salary, placeholder: "e.g. 100000", oninput: debounce((e) => setState({ min_salary: e.target.value }), 500) });
+  const jobTypeSeg = segmented([["", "Any"], ...JOB_TYPES.map((t) => [t, t])], st.job_type, (v) => setState({ job_type: v }));
   const sortSel = h("select", { class: "input", "aria-label": "Sort", onchange: (e) => setState({ sort: e.target.value }) },
     SORTS.map(([v, l]) => h("option", { value: v, selected: v === st.sort }, l)));
 
@@ -848,7 +854,7 @@ VIEWS.jobs = function JobsView(root, params) {
     field("Location", locInput),
     field("Region", regionSel, "Derived from each job's location"),
     field("Skills", tagInput({ values: st.skills, listId: "dl-skills", placeholder: st.skills.length ? "Add another…" : "Type a skill, press Enter", onChange: (skills) => setState({ skills }) }), "Jobs must mention every skill listed"),
-    field("Job type", segmented([["", "Any"], ...JOB_TYPES.map((t) => [t, t])], st.job_type, (v) => setState({ job_type: v }))),
+    field("Job type", jobTypeSeg),
     field("Role category", roleSel, "Derived from the job title"),
     field("Experience needed", expSel, "Years of experience stated in the posting"),
     field("Work mode", segmented([["", "Any"], ["true", "Remote"], ["false", "On-site"]], st.remote, (v) => setState({ remote: v }))),
@@ -857,6 +863,60 @@ VIEWS.jobs = function JobsView(root, params) {
     field("Source", sourceSel),
     h("label", { class: "check" }, h("input", { type: "checkbox", checked: st.include_inactive, onchange: (e) => setState({ include_inactive: e.target.checked }) }), "Include closed jobs"),
     datalists);
+
+  const quickPills = h("div", { class: "chips", style: { margin: "0 0 16px 0", gap: "6px" } });
+  function renderQuickPills() {
+    const isFresher = (st.experience_level || "").toLowerCase().includes("fresher");
+    const isIntern = st.job_type === "Internship";
+    const loc = (st.location || "").toLowerCase();
+    const isDelhi = loc.includes("delhi") || loc.includes("noida") || loc.includes("gurgaon") || loc.includes("gurugram");
+    const isGujarat = loc.includes("ahmedabad") || loc.includes("vadodara") || loc.includes("surat") || loc.includes("gujarat");
+    const isNearHubs = loc.includes("jaipur") || loc.includes("chandigarh") || loc.includes("pune") || loc.includes("bengaluru") || loc.includes("hyderabad") || loc.includes("nearby tech hubs");
+
+    quickPills.replaceChildren(
+      h("button", {
+        type: "button",
+        class: `chip ${isFresher ? "accent" : ""}`,
+        title: "Filter jobs for Freshers (0-1 yr experience)",
+        onclick: () => setState({ experience_level: isFresher ? "" : "Fresher / 0-1 yr" })
+      }, "🎓 Freshers (0-1 yr)"),
+      h("button", {
+        type: "button",
+        class: `chip ${isIntern ? "accent" : ""}`,
+        title: "Filter by Internship roles",
+        onclick: () => setState({ job_type: isIntern ? "" : "Internship" })
+      }, "💼 Internships"),
+      h("button", {
+        type: "button",
+        class: `chip ${isDelhi ? "accent" : ""}`,
+        title: "Filter for Delhi, Noida, Gurgaon (Delhi NCR)",
+        onclick: () => setState({ location: isDelhi ? "" : "Delhi NCR" })
+      }, "📍 Delhi NCR"),
+      h("button", {
+        type: "button",
+        class: `chip ${isGujarat ? "accent" : ""}`,
+        title: "Filter for Vadodara, Ahmedabad, Surat & Gujarat tech hubs",
+        onclick: () => setState({ location: isGujarat ? "" : "Vadodara, Ahmedabad, Surat" })
+      }, "📍 Vadodara · Ahmedabad · Surat"),
+      h("button", {
+        type: "button",
+        class: `chip ${isNearHubs ? "accent" : ""}`,
+        title: "Filter for Jaipur, Chandigarh, Pune, Bengaluru, Hyderabad",
+        onclick: () => setState({ location: isNearHubs ? "" : "nearby tech hubs" })
+      }, "📍 Nearby Tech Hubs"),
+      h("button", {
+        type: "button",
+        class: `chip ${(isFresher && (isDelhi || isGujarat)) ? "accent" : ""}`,
+        style: { fontWeight: "600" },
+        title: "One-click: Freshers/Interns in Delhi NCR & Gujarat tech hubs",
+        onclick: () => setState({
+          experience_level: "Fresher / 0-1 yr, Internship",
+          location: "Delhi NCR, Vadodara, Ahmedabad, Surat"
+        })
+      }, "🎯 Freshers in Target Hubs")
+    );
+  }
+  renderQuickPills();
 
   const countEl = h("span", { class: "results-count" });
   const filtersToggle = button("Filters", { cls: "filters-toggle", icon: "filter", onclick: () => filters.classList.toggle("open") });
@@ -867,6 +927,7 @@ VIEWS.jobs = function JobsView(root, params) {
     h("section", null,
       h("div", { class: "results-head" }, h("h1", null, "Jobs"), countEl, h("span", { class: "spacer" }), filtersToggle, sortSel,
         button("Export CSV", { icon: "download", title: "Download the matching jobs as a spreadsheet", onclick: exportCsv })),
+      quickPills,
       list, pager,
       h("p", { class: "kbd-hint" }, h("kbd", null, "/"), " search · ", h("kbd", null, "j"), " ", h("kbd", null, "k"), " next / previous · ", h("kbd", null, "s"), " save · ", h("kbd", null, "Esc"), " close"))));
 
@@ -890,7 +951,13 @@ VIEWS.jobs = function JobsView(root, params) {
       fill(roleSel, f.role_categories, st.role_category);
       fill(expSel, f.experience_levels, st.experience_level);
       $("#dl-skills", datalists).replaceChildren(...f.skills.map((x) => h("option", { value: x.name })));
-      $("#dl-locations", datalists).replaceChildren(...f.locations.map((x) => h("option", { value: x.name })));
+      const priorityLocs = [
+        "Delhi NCR", "Delhi", "New Delhi", "Noida", "Greater Noida", "Gurugram", "Gurgaon", "Faridabad", "Ghaziabad",
+        "Vadodara", "Ahmedabad", "Surat", "Gandhinagar", "Gujarat",
+        "Jaipur", "Chandigarh", "Mohali", "Pune", "Mumbai", "Bengaluru", "Hyderabad", "Indore"
+      ];
+      const allLocs = [...new Set([...priorityLocs, ...f.locations.map((x) => x.name)])];
+      $("#dl-locations", datalists).replaceChildren(...allLocs.map((name) => h("option", { value: name })));
       if (dbEmpty && !items.length) renderResults();
     } catch { /* the job list shows the error */ }
   }
@@ -930,6 +997,7 @@ VIEWS.jobs = function JobsView(root, params) {
   }
 
   function renderResults() {
+    renderQuickPills();
     countEl.textContent = `${plural(total, "job")}${activeFilters(st) ? " match" : ""}`;
     if (!items.length) {
       if (activeFilters(st)) {
